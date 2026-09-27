@@ -1,0 +1,23 @@
+{
+  "name": "website_gk_fashion_workd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "sharp": "^0.35.4",
+    "vite": "^8.3.1"
+  },
+  "dependencies": {
+    "lucide": "^1.48.0",
+    "swiper": "^14.2.0"
+  }
+}
