@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initReelsSwiper();
   initSegmentedControl();
   initSareePreview();
-  initVideoTabs();
   initModelSwipers();
   initAccordion();
   initModals();
@@ -52,14 +51,16 @@ function initReelsSwiper() {
     spaceBetween: 16,
     centeredSlides: false,
     grabCursor: true,
+    touchRatio: 1.2,
+    resistanceRatio: 0.85,
     pagination: {
       el: '.reels-swiper-pagination',
       clickable: true,
     },
     breakpoints: {
       768: {
-        slidesPerView: 3,
-        spaceBetween: 20,
+        slidesPerView: 2,
+        spaceBetween: 24,
       }
     }
   });
@@ -193,30 +194,6 @@ function initSareePreview() {
   });
 }
 
-/* ==========================================================================
-   5. Video Mode Switcher (Autoplay Feed vs Live Embeds)
-   ========================================================================== */
-function initVideoTabs() {
-  const tabBtns = document.querySelectorAll('.vtab-btn');
-  const panels = {
-    feed: document.getElementById('vtab-feed'),
-    live: document.getElementById('vtab-live'),
-  };
-
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const mode = btn.getAttribute('data-vtab');
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      Object.keys(panels).forEach(key => {
-        if (panels[key]) {
-          panels[key].classList.toggle('active', key === mode);
-        }
-      });
-    });
-  });
-}
 
 /* ==========================================================================
    6. Dedicated Apple-Style Model Swipers (One for Every Model)
