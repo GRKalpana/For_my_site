@@ -275,11 +275,20 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--gold-rich);
 }
 
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 22px;
+/* Mobile-first: Desktop text nav is hidden on mobile & tablets */
+.desktop-nav,
+.hide-on-mobile {
+  display: none !important;
 }
+
+@media (min-width: 1025px) {
+  .desktop-nav {
+    display: flex !important;
+    align-items: center;
+    gap: 22px;
+  }
+}
+
 .nav-item {
   font-size: 0.88rem;
   font-weight: 500;
@@ -327,12 +336,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ios-menu-btn {
-  display: none;
+  display: flex; /* Visible on mobile & tablets */
   flex-direction: column;
   gap: 5px;
   padding: 8px;
   border-radius: var(--radius-sm);
   background: var(--ios-surface-soft);
+}
+@media (min-width: 1025px) {
+  .ios-menu-btn {
+    display: none !important;
+  }
 }
 .ios-menu-btn .bar {
   width: 20px;
@@ -1855,12 +1869,18 @@ h1, h2, h3, h4, h5, h6 {
    Responsive Adaptations (Mobile First Excellence)
    ========================================================================== */
 
-@media (max-width: 900px) {
-  .desktop-nav {
-    display: none;
+@media (max-width: 1024px) {
+  .desktop-nav,
+  .hide-on-mobile {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
   }
   .ios-menu-btn {
-    display: flex;
+    display: flex !important;
   }
   .bento-split-media, .signature-aari-card {
     grid-template-columns: 1fr;
@@ -1886,9 +1906,9 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1025px) {
   .ios-dock-bar {
-    display: none; /* Hide bottom dock on large desktop screens */
+    display: none !important; /* Hide bottom dock on large desktop screens */
   }
   body {
     padding-bottom: 0;
